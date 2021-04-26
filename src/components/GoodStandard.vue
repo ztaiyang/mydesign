@@ -2,66 +2,74 @@
 
 <template>
     <div >
-        <p>--------------------------------------------------</p>
-        <div class='gs-box'>
-            <el-row>
-  <el-col :span="24" >
-    <el-card :body-style="{ padding: '0px' }">
-      <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
-      <div style="padding: 15px;">
-        <span>{{description}}</span>
-        <div class="bottom clearfix">
-          <time class="time">{{ currentDate }}</time>
-          <el-button type="text" class="button">操作按钮</el-button>
-        </div>
-      </div>
-    </el-card>
-  </el-col>
-</el-row>
-
-        </div>
-        <p>-------------------------------</p>
-        
+        <div>
+              <el-col :span="24" class='gs-box' v-for = " item in dataList" :key='item._id' >
+                <el-card :body-style="{ padding: '0px' }">
+                  <img :src="urlbase+item.img" class="image">
+                  <div style="padding: 15px;">
+                    <span>{{item.desc}}</span>
+                    <div class="bottom clearfix">
+                    <p>
+                      <span v-text='yuan+item.price' class='price'></span>
+                      <span v-text = yuan+item.oldPrice class='oldPrice'></span>
+                    </p>
+                      
+                    </div>
+                  </div>
+                </el-card>
+              </el-col> 
+              </div>
     </div>
 </template>
 
 <script>
-// description:封装组件中的描述信息,关于商品的描述的
-// descript:父组件向子组件传递描述信息的自定义属性
+
     export default {
-    props:{
-        descript:String
-    },
     data() {
     return {
       currentDate: new Date(),
-      description:this.descript
+      dataList:[],
+      urlbase:"http://localhost:3000",
+      yuan:'￥'
     }
   },
+    created(){
+            this.$http.fetchGood({}).then(res=>{
+                this.dataList = res.data
+            })
+        },
   mounted(){
-    // console.log('------------')
-    // this.$http.fetchHome()
+    
   }
     }
 </script>
 
 <style lang="css" scoped>
-  
   .gs-box{
       width: 240px;
-      height: 360px;
+      height: 405px;
       padding: 10px;
       border: 1px solid #999;
       box-sizing: border-box;
+      margin-left: 40px;
+      margin-bottom: 20px;
  }
  .gs-box:hover{
    border: 1px solid red;
+   cursor: pointer;
  }
-  .time {
-    font-size: 13px;
-    color: #999;
-  }
-  
+ .price{
+   color: red;
+   font-size: 18px;
+   line-height: 24px;
+ }
+ .oldPrice{
+   color: #9b9b9b;
+   font-size: 14px;
+   text-decoration: line-through;
+   margin-left: 8px;
+   line-height: 19px;
+ }
   .bottom {
     margin-top: 13px;
     line-height: 12px;

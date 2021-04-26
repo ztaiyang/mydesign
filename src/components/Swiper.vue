@@ -18,7 +18,7 @@
         created(){
             this.$http.fetchSwiper().then(res=>{
                     this.list = res.data
-                console.log("created",this.list)
+                // console.log("created",this.list)
             })
             
         },

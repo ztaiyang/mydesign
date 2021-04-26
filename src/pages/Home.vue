@@ -23,11 +23,11 @@
         <router-link to='Result'>我要去结果</router-link>
         <router-link to='Cart'>我要去详情</router-link>
         <hr>
+        <router-link to='/addGood/:id'>去新增页面</router-link>
+        <hr>
         <router-link to='ShoppingCart'>购物车</router-link>
         <router-link to='Me'>我的</router-link>
-        <GoodStandard :descript="op"/>
-        <h1>----------</h1>
-        <h2>----------------</h2>
+        <GoodStandard />
     </div>
 </template>
 
@@ -38,10 +38,10 @@ import {GoodStandard,Swiper} from '../components/index'
             GoodStandard,
             Swiper
         },
+      
         data(){
             return {
-                op:"kkkk",
-                searchInput:"",
+                searchInput:""
 
             }
         },
@@ -70,8 +70,6 @@ margin-right:20px
 width:60px;
 height:40px;
 padding: 0 5px;
-// text-align:center;
-// margin: 0 auto;
 }
 }
 
