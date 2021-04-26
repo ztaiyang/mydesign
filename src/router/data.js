@@ -6,7 +6,7 @@ import Result from '../pages/Result.vue'
 import Detail from '../pages/Detail.vue'
 import ShoppingCart from '../pages/ShoppingCart.vue'
 import Search from '../pages/Search.vue'
-// import Me from '../pages/Me.vue'
+import addGood from '../pages/addGood.vue'
 let router =[
     {
         id:'10',
@@ -47,6 +47,11 @@ let router =[
         id:'80',
         component:Search,
         path:'/Search'
+    },
+    {
+        id:'90',
+        component:addGood,
+        path:'/addGood/:id'
     }
     
 ]

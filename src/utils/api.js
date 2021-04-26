@@ -13,7 +13,15 @@ function fetchRegister(data){
         data
     })
 }
+function fetchSwiper(data){
+    return fetch({
+        url:'api/swiper/getSwiper',
+        method:'GET',
+        data
+    })
+}
 export default{
     fetchRegister,
-    fetchLogin
+    fetchLogin,
+    fetchSwiper
 }

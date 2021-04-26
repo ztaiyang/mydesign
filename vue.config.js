@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 module.exports={
     devServer:{
         proxy:{
@@ -6,5 +7,14 @@ module.exports={
                 changeOrigin:true
             }
         }
+    },
+    configureWebpack: {
+        plugins: [
+            new webpack.ProvidePlugin({
+                $:"jquery",
+                jQuery:"jquery",
+                "windows.jQuery":"jquery"
+            })
+        ]
     }
 }

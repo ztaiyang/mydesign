@@ -1,13 +1,12 @@
 <template>
-  <el-carousel :interval="4000" type="card" height="300px" @change=changeColor()>
+  <el-carousel :interval="4000" type="card" height="300px">
     <el-carousel-item v-for="item in list" :key="item._id">
-        <img :src= "baseurl+item.src" alt="">
-      <!-- <h3 class="medium">{{ item }}</h3> -->
+       <img :src= "baseurl+item.src" alt="">
     </el-carousel-item>
   </el-carousel>
 </template>
 <script>
-import $ from 'jquery'
+// import $ from 'jquery'
 
     export default {
         data(){
@@ -18,20 +17,16 @@ import $ from 'jquery'
         },
         created(){
             this.$http.fetchSwiper().then(res=>{
-                if(res.err == 0){
                     this.list = res.data
-                }
-                console.log(this.list)
+                console.log("created",this.list)
             })
             
         },
-        mounted(){},
+        beforeMount(){
+        },
+        mounted(){
+        },
         methods:{
-            changeColor(){
-                 console.log('$$$',$)
-            // console.log($('.el-carousel__indicators ').find('li .is-actived'))
-            // console.log($(".el-carousel__indicator .el-carousel__indicator--horizontal .is-active"))
-            }
         }
     }
 </script>

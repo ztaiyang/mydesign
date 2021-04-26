@@ -1,6 +1,6 @@
 import GoodStandard from './GoodStandard.vue'
-import Head from './Head.vue'
+import Swiper from './Swiper.vue'
 export {
     GoodStandard,
-    Head
+    Swiper
 }
